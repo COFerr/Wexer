@@ -117,7 +117,7 @@ const InfoPosition = styled.div`
 position: absolute;
 top: 203px;
 left: 138px;
-width: 22%`
+width: 23%`
 
 const Info = styled.div`
 border: 1px solid #E0E0E0;
@@ -213,7 +213,7 @@ const ServicePosition = styled.div`
 position: absolute;
 top: 203px;
 left: 495px;
-width: 60%;`
+width: 62%;`
 
 const AddService = styled.div`
 box-sizing: border-box;
@@ -226,7 +226,114 @@ border: 1px solid #E0E0E0;
 /* Sombra 1 */
 box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 border-radius: 8px;
-padding: 24px`
+padding: 24px;
+
+& > div{
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat';
+
+    & > span {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        /* identical to box height */
+        display: flex;
+        align-items: center;
+        /* Tons de cinza/Cinza 900 */
+        color: #212121;
+    }
+
+    & > select{
+        width: 495px;
+        height: 48px;
+        background: #FFFFFF;
+        /* Tons de cinza/Cinza 300 */
+        border: 1px solid #E0E0E0;
+        border-radius: 8px;
+        margin-right: 24px;
+        padding-left: 16px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 170%;
+        /* Tons de cinza/Cinza 700 */
+        color: #616161;
+
+        & > option {
+            /* montserrat 16 */
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 170%;
+            /* or 27px */
+            display: flex;
+            align-items: center;
+            /* Tons de cinza/Cinza 700 */
+            color: #616161;
+        }
+    }
+
+    & > img {
+        box-sizing: border-box;
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 4px 8px;
+        gap: 10px;
+        width: 32px;
+        height: 24px;
+        /* Branco */
+        background: #FFFFFF;
+        /* Primária (Verde)/verde mais forte */
+        border: 1px solid #017849;
+        /* tag */
+        box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+    }
+
+    & > a{
+        text-decoration: none;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        /* identical to box height */
+        display: flex;
+        align-items: center;
+        /* Tons de cinza/Cinza 900 */
+        color: #212121;
+         
+        & > img {
+            box-sizing: border-box;
+            /* Auto layout */
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 4px 8px;
+            margin-right: 12px;
+            width: 32px;
+            height: 24px;
+            /* Branco */
+            background: #FFFFFF;
+            /* Primária (Verde)/verde mais forte */
+            border: 1px solid #017849;
+            /* tag */
+            box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+        }    
+    }
+}`
 
 export default {
     ContainerBox,
