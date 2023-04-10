@@ -8,6 +8,7 @@ import config from "./assets/Config.svg"
 import users from "./assets/users.svg"
 import Prontuario from "./pages/prontuario"
 
+
 function App() {
   return(
     <>

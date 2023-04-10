@@ -147,6 +147,7 @@ width: 100%;
 
     & > img{
         /* novo */
+        cursor: pointer;
         box-sizing: border-box;
         /* Auto layout */
         display: flex;
@@ -302,6 +303,7 @@ padding: 24px;
 
     & > a{
         text-decoration: none;
+        cursor: pointer;
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;

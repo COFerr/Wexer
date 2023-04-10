@@ -4,7 +4,7 @@ const Flex = styled.div`
 position: fixed;
 top: 0px;
 display: flex;
-z-index:999`
+z-index:900`
 
 const Logo = styled.img`
 width: 29px;
