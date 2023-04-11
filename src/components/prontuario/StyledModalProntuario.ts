@@ -3,6 +3,7 @@ import styled from "styled-components";
 type props = {
     service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" |'';
 }
+
 const ModalProntuario = styled.div`
 display: ${({service}:props) => service === "" ? 'none' : 'block' };
 position: absolute;
@@ -11,7 +12,7 @@ left: 0;
 z-index: 901;
 width: 100vw;
 min-height: 150vh;
-background: rgba(0,0,0,0.3);
+background: rgba(0,0,0,0.4);
 `
 
 const ContainerModalProntuario = styled.div `

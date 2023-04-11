@@ -12,19 +12,20 @@ type props = {
     service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" | '';
 }
 function Prontuario() {
-    const [prontuario, setProntuario] = useState(true)
+    const [prontuario, setProntuario] = useState(false)
     const [modal, setModal] = useState<props>({ service: '' })
     function changeView() {
         setProntuario(!prontuario);
     }
 
     function activateModal({ service }: props) {
-        setModal({ service });
-    }
-    return (
+        setModal({ service});
+        window.scrollTo(0,0);
 
+    }
+    
+    return (
         <>
-            
                 <S.ContainerBox>
                     <S.TaskBar prontuario={prontuario}>
                         <div>
@@ -32,7 +33,7 @@ function Prontuario() {
                             <a onClick={changeView} className='dados'>Prontuário</a>
                         </div>
                         <div className="search">
-                            <input placeholder="O que você está procurando?" />
+                            <input placeholder="O que você está procurando?"/>
                             <img src={glass} alt='glass' />
                         </div>
                     </S.TaskBar>
@@ -53,10 +54,10 @@ function Prontuario() {
                             </div>
                             <hr />
                             <div>
-                                <a onClick={() => activateModal({ service: "Sessão" })}><img src={image} alt='image' />Sessão</a>
-                                <a onClick={() => activateModal({ service: "Fato relevante" })}><img src={image} alt='image' />Fato Relevante</a>
-                                <a onClick={() => activateModal({ service: "Anexo" })}><img src={image} alt='image' />Anexo</a>
-                                <a onClick={() => activateModal({ service: "Avaliação Psicológica" })}><img src={image} alt='image' />Avaliação Psicológica</a>
+                                <a onClick={() => activateModal({ service: "Sessão" })}><img src={image} alt='image'/>Sessão</a>
+                                <a onClick={() => activateModal({ service: "Fato relevante"})}><img src={image} alt='image'/>Fato Relevante</a>
+                                <a onClick={() => activateModal({ service: "Anexo" })}><img src={image} alt='image'/>Anexo</a>
+                                <a onClick={() => activateModal({ service: "Avaliação Psicológica" })}><img src={image} alt='image'/>Avaliação Psicológica</a>
                             </div>
                         </S.AddService>
                     </S.ServicePosition>
@@ -83,14 +84,14 @@ function Prontuario() {
                         <S.Info>
                             <div>
                                 <span>Anotações pessoais</span>
-                                <img src={image} alt='image' onClick={() => activateModal({ service: "Anotações Pessoais" })} />
+                                <img src={image} alt='image' onClick={() => activateModal({ service: "Anotações Pessoais"})} />
                             </div>
                             <h4>Na sessão de hoje consegui identificar alguns sintomas de ansiedade através da fala e comportamento
                                 da paciente. Tal como: inquietação e medos.</h4>
                         </S.Info>
                     </S.InfoPosition>
                     </>}
-                    <ModalProntuario service={modal.service}></ModalProntuario>
+                    <ModalProntuario service={modal.service} modalState={() => activateModal({service: ""})}></ModalProntuario>
                 </S.ContainerBox>
             {prontuario && <S.ContainerBox><h1>Dados do Paciente</h1></S.ContainerBox>}
         </>

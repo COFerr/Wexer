@@ -1,14 +1,37 @@
 import S from "./StyledModalProntuario"
 import { useState } from 'react'
+import React from "react";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 
 type props = {
     service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" | '';
+    modalState: () => void;
 }
-
-function ModalProntuario({ service }: props): JSX.Element {
+const modules = {
+    toolbar: [
+      [{ header: '1' }, { header: '2' }, { font: [] }],
+      [{ size: [] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [
+        { list: 'ordered' },
+        { list: 'bullet' },
+        { indent: '-1' },
+        { indent: '+1' },
+      ],
+      ['link', 'image', 'video'],
+      ['clean'],
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false,
+    },
+  }
+function ModalProntuario({ service, modalState }: props): JSX.Element {
     return (
-        <S.ModalProntuario service={service}>
-            <S.ContainerModalProntuario service={service}>
+        <S.ModalProntuario  service={service}>
+            <S.ContainerModalProntuario service={service} >
                 <div>
                     {service === 'Sessão' && <h2>Nova Sessão</h2>}
                     {service === 'Fato relevante' && <h2>Novo Fato Relevante</h2>}
@@ -16,7 +39,7 @@ function ModalProntuario({ service }: props): JSX.Element {
                     {service === 'Avaliação Psicológica' && <h2>Nova Avaliação Psicológica</h2>}
                     {service === 'Anotações Pessoais' && <h2>Anotações Pessoais</h2>}
                     {service === 'Serviço' && <h2>Novo Serviço</h2>}
-                    <a><img alt='vazio' /></a>
+                    <a><img alt='vazio' onClick={modalState}/></a>
                 </div>
                 {service === 'Sessão' &&
                     <>
@@ -88,9 +111,11 @@ function ModalProntuario({ service }: props): JSX.Element {
                     </>
                 }
                 {service === 'Anotações Pessoais' &&
-                    <>
-                        <textarea/>
-                    </>
+                    <div>
+                        <ReactQuill theme="snow" >
+                            <div className="my-editing-area"/>
+                        </ReactQuill>
+                    </div>
                 }
                 {service === 'Serviço' &&
                     <>
@@ -98,7 +123,7 @@ function ModalProntuario({ service }: props): JSX.Element {
                     <p>Nome Do Paciente</p>
                     <p className="green">CPF</p>
                     <p>000.000.000-00</p>
-                    <label>Data inicial</label>
+                    <label>Data inicial</label><br/>
                     <input></input>
                     <label>Serviço</label>
                     <select></select>
