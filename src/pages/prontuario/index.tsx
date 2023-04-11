@@ -7,6 +7,13 @@ import user from '../../assets/business.svg'
 import business from '../../assets/business.svg'
 import book from "../../assets/book.svg"
 import ModalProntuario from "../../components/prontuario/ModalProntuario"
+import sessao from "../../assets/sessao.svg"
+import pencil from "../../assets/pencil.svg"
+import junk from "../../assets/junk.svg"
+import fato from "../../assets/fatorelevante.svg"
+import anexo from "../../assets/anexo.svg"
+import avaliacao from "../../assets/avaliacaopsicologica.svg"
+
 
 type props = {
     service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" | '';
@@ -49,15 +56,15 @@ function Prontuario() {
                                     <option value="valor3">Valor 3</option>
                                 </select>
                                 <span>data inicial:</span> 18/10/2022
-                                <img src={image} alt='image' />
-                                <img src={image} alt='image' />
+                                <img src={pencil} alt='image' />
+                                <img src={junk} alt='image' />
                             </div>
                             <hr />
                             <div>
-                                <a onClick={() => activateModal({ service: "Sessão" })}><img src={image} alt='image'/>Sessão</a>
-                                <a onClick={() => activateModal({ service: "Fato relevante"})}><img src={image} alt='image'/>Fato Relevante</a>
-                                <a onClick={() => activateModal({ service: "Anexo" })}><img src={image} alt='image'/>Anexo</a>
-                                <a onClick={() => activateModal({ service: "Avaliação Psicológica" })}><img src={image} alt='image'/>Avaliação Psicológica</a>
+                                <a onClick={() => activateModal({ service: "Sessão" })}><img src={sessao} alt='image'/>Sessão</a>
+                                <a onClick={() => activateModal({ service: "Fato relevante"})}><img src={fato} alt='image'/>Fato Relevante</a>
+                                <a onClick={() => activateModal({ service: "Anexo" })}><img src={anexo} alt='image'/>Anexo</a>
+                                <a onClick={() => activateModal({ service: "Avaliação Psicológica" })}><img src={avaliacao} alt='image'/>Avaliação Psicológica</a>
                             </div>
                         </S.AddService>
                     </S.ServicePosition>
@@ -76,7 +83,7 @@ function Prontuario() {
                         <S.Info>
                             <div>
                                 <span>Demandas e objetivos</span>
-                                <img src={image} alt='image' onClick={() => activateModal({ service: "Serviço" })} />
+                                <img src={pencil} alt='image' onClick={() => activateModal({ service: "Serviço" })} />
                             </div>
                             <h4>No dia 12 de fevereiro de 2015, a paciente B. A. V, 40 anos, solteira
                                 e residente na cidade de Manaus, procurou atendimento psicológico em virtude de estar apresentando...</h4>
@@ -84,7 +91,7 @@ function Prontuario() {
                         <S.Info>
                             <div>
                                 <span>Anotações pessoais</span>
-                                <img src={image} alt='image' onClick={() => activateModal({ service: "Anotações Pessoais"})} />
+                                <img src={pencil} alt='image' onClick={() => activateModal({ service: "Anotações Pessoais"})} />
                             </div>
                             <h4>Na sessão de hoje consegui identificar alguns sintomas de ansiedade através da fala e comportamento
                                 da paciente. Tal como: inquietação e medos.</h4>

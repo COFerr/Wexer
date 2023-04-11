@@ -3,34 +3,16 @@ import { useState } from 'react'
 import React from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
+import close from "../../assets/close.svg"
 
 type props = {
     service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" | '';
     modalState: () => void;
 }
-const modules = {
-    toolbar: [
-      [{ header: '1' }, { header: '2' }, { font: [] }],
-      [{ size: [] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [
-        { list: 'ordered' },
-        { list: 'bullet' },
-        { indent: '-1' },
-        { indent: '+1' },
-      ],
-      ['link', 'image', 'video'],
-      ['clean'],
-    ],
-    clipboard: {
-      // toggle to add extra line breaks when pasting HTML:
-      matchVisual: false,
-    },
-  }
+
 function ModalProntuario({ service, modalState }: props): JSX.Element {
     return (
-        <S.ModalProntuario  service={service}>
+        <S.ModalProntuario service={service}>
             <S.ContainerModalProntuario service={service} >
                 <div>
                     {service === 'Sessão' && <h2>Nova Sessão</h2>}
@@ -39,71 +21,74 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                     {service === 'Avaliação Psicológica' && <h2>Nova Avaliação Psicológica</h2>}
                     {service === 'Anotações Pessoais' && <h2>Anotações Pessoais</h2>}
                     {service === 'Serviço' && <h2>Novo Serviço</h2>}
-                    <a><img alt='vazio' onClick={modalState}/></a>
+                    <a><img src={close} alt='vazio' onClick={modalState} /></a>
                 </div>
                 {service === 'Sessão' &&
                     <>
-                        <span>1</span><p>Dados Gerais</p>
+                        <div className="flexleft"><span>1</span><p>Dados Gerais</p></div>
                         <div>
                             <div>
-                                <label>vazio</label><br />
-                                <input></input>
+                                <label>Data*</label>
+                                <input className="data"></input>
                             </div>
                             <div>
-                                <label>vazio</label><br />
-                                <input></input>
+                                <label>Hora de início*</label>
+                                <input className="data"></input>
                             </div>
                             <div>
-                                <label>vazio</label><br />
-                                <input></input>
+                                <label>Hora fim*</label>
+                                <input className="data"></input>
                             </div>
                         </div>
                         <hr />
-                        <span>2</span><p>Sessão</p><br />
-                        <label>titulo</label><br />
-                        <input></input><br />
-                        <label>Resumo da sessão</label><br />
+                        <div className="flexleft"><span>2</span><p>Sessão</p></div>
+                        <label>titulo*</label>
+                        <input></input>
+                        <label>Resumo da sessão*</label>
                         <textarea></textarea>
                     </>}
                 {service === 'Fato relevante' &&
                     <>
                         <div>
                             <div>
-                                <label>Data*</label><br />
-                                <input></input><br />
+                                <label>Data*</label>
+                                <input className="data"></input>
                             </div>
                             <div>
-                                <label>Título*</label><br />
-                                <input></input><br />
+                                <label>Título*</label>
+                                <input className="title"></input>
                             </div>
                         </div>
-                        <label>Descrição</label><br />
-                        <textarea></textarea>
+                        <label>Descrição*</label>
+                        <textarea placeholder="text"></textarea>
                     </>}
                 {service === 'Anexo' &&
                     <>
                         <div>
                             <div>
-                                <label>Data*</label><br />
-                                <input></input><br />
+                                <label>Data*</label>
+                                <input className='data'></input>
                             </div>
                             <div>
-                                <label>Título*</label><br />
-                                <input></input><br />
+                                <label>Título*</label>
+                                <input className='title'></input>
                             </div>
                         </div>
-                        <label>Descrição</label><br />
-                        <textarea></textarea><br />
-                        <label>Anexar arquivos*</label><br />
-                        <input type='file' />
+                        <label>Descrição</label>
+                        <textarea placeholder="text"></textarea>
+                        <label>Anexar arquivos*</label>
+                        <input type='file' className="file" />
                     </>}
                 {service === 'Avaliação Psicológica' &&
                     <>
-                        <label>Data*</label><br />
-                        <input></input>
-
+                        <div>
+                            <div>
+                                <label>Data*</label>
+                                <input className="data"></input>
+                            </div>
+                        </div>
                         <div className="atention">
-                            <span>Atenção</span>
+                            <span>Atenção</span><br/>
                             <p>Você será redirecionado para uma nova página onde irá preencher
                                 os dados da avaliação psicológica.</p>
                         </div>
@@ -113,32 +98,34 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                 {service === 'Anotações Pessoais' &&
                     <div>
                         <ReactQuill theme="snow" >
-                            <div className="my-editing-area"/>
+                            <div className="my-editing-area" />
                         </ReactQuill>
                     </div>
                 }
                 {service === 'Serviço' &&
                     <>
-                    <p className="green">Paciente</p>
-                    <p>Nome Do Paciente</p>
-                    <p className="green">CPF</p>
-                    <p>000.000.000-00</p>
-                    <label>Data inicial</label><br/>
-                    <input></input>
-                    <label>Serviço</label>
-                    <select></select>
-                    <p>Demandas e objetivos</p>
-                    <textarea/>
+                        <p className="green">Paciente</p>
+                        <p>Nome Do Paciente</p>
+                        <p className="green">CPF</p>
+                        <p>000.000.000-00</p><br/>
+                        <label>Data inicial</label>
+                        <input></input>
+                        <label>Serviço</label>
+                        <select></select>
+                        <label>Demandas e objetivos</label>
+                        <textarea placeholder="text"/>
                     </>
                 }
 
+                { service !== 'Serviço' ? 
                 <footer>
-                    <div><p>Footer</p></div>
+                    <div><p>*Campos obrigatórios</p></div>
                     <div>
-                        <button>vazio</button>
-                        <button>vazio</button>
+                        <a className="cancel">cancelar</a>
+                        {service !== 'Avaliação Psicológica' ? <a className="confirm">criar</a> : <a className="confirm">prosseguir</a>}
                     </div>
-                </footer>
+                </footer> : 
+                <button>Salvar</button>}
             </S.ContainerModalProntuario>
         </S.ModalProntuario>
     )
