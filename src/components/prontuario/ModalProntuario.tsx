@@ -4,13 +4,17 @@ import React from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import close from "../../assets/close.svg"
+import EditorToolbar, { modules, formats } from "./QuillToolbar";
+import "react-quill/dist/quill.snow.css";
 
 type props = {
     service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" | '';
     modalState: () => void;
 }
 
+
 function ModalProntuario({ service, modalState }: props): JSX.Element {
+    const [value, setValue] = useState('')
     return (
         <S.ModalProntuario service={service}>
             <S.ContainerModalProntuario service={service} >
@@ -76,8 +80,12 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         </div>
                         <label>Descrição</label>
                         <textarea placeholder="text"></textarea>
-                        <label>Anexar arquivos*</label>
-                        <input type='file' className="file" />
+                        <div><label >Anexar arquivos*</label></div>
+                        <div className="upload">
+                            <div className="inputFileOverlay">Escolher o arquivo...</div>
+                            <input type="file" name="upload" id="upload" onChange={(e) => { setValue(e.target && e.target.files && !!e.target.files.length ? e.target.files[0].name : ''); console.log(e) }} />
+                        </div>
+                        <p>{value}{value && <img src={close} alt="fechar" onClick={() => setValue('')} />}</p>
                     </>}
                 {service === 'Avaliação Psicológica' &&
                     <>
@@ -88,7 +96,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                             </div>
                         </div>
                         <div className="atention">
-                            <span>Atenção</span><br/>
+                            <span>Atenção</span><br />
                             <p>Você será redirecionado para uma nova página onde irá preencher
                                 os dados da avaliação psicológica.</p>
                         </div>
@@ -96,36 +104,37 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                     </>
                 }
                 {service === 'Anotações Pessoais' &&
-                    <div>
-                        <ReactQuill theme="snow" >
-                            <div className="my-editing-area" />
+                    <>
+                        <EditorToolbar />
+                        <ReactQuill theme="snow" modules={modules} formats={formats}>
+                            <S.EditingArea></S.EditingArea>
                         </ReactQuill>
-                    </div>
+                    </>
                 }
                 {service === 'Serviço' &&
                     <>
                         <p className="green">Paciente</p>
                         <p>Nome Do Paciente</p>
                         <p className="green">CPF</p>
-                        <p>000.000.000-00</p><br/>
+                        <p>000.000.000-00</p><br />
                         <label>Data inicial</label>
                         <input></input>
                         <label>Serviço</label>
                         <select></select>
                         <label>Demandas e objetivos</label>
-                        <textarea placeholder="text"/>
+                        <textarea placeholder="text" />
                     </>
                 }
 
-                { service !== 'Serviço' ? 
-                <footer>
-                    <div><p>*Campos obrigatórios</p></div>
-                    <div>
-                        <a className="cancel">cancelar</a>
-                        {service !== 'Avaliação Psicológica' ? <a className="confirm">criar</a> : <a className="confirm">prosseguir</a>}
-                    </div>
-                </footer> : 
-                <button>Salvar</button>}
+                {service !== 'Serviço' ?
+                    <footer>
+                        <div><p>*Campos obrigatórios</p></div>
+                        <div>
+                            <a className="cancel">cancelar</a>
+                            {service !== 'Avaliação Psicológica' ? <a className="confirm">criar</a> : <a className="confirm">prosseguir</a>}
+                        </div>
+                    </footer> :
+                    <button>Salvar</button>}
             </S.ContainerModalProntuario>
         </S.ModalProntuario>
     )

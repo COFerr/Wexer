@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 type props = {
-    service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" |'';
+    service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" | '';
 }
 
 const ModalProntuario = styled.div`
-display: ${({service}:props) => service === "" ? 'none' : 'block' };
+display: ${({ service }: props) => service === "" ? 'none' : 'block'};
 position: absolute;
 top: 0;
 left: 0;
@@ -15,15 +15,60 @@ min-height: 150vh;
 background: rgba(0,0,0,0.4);
 `
 
-const ContainerModalProntuario = styled.div `
+const ContainerModalProntuario = styled.div`
 position: absolute;
 left: 418px;
 top: 97px;
-width: ${({service}:props) => service !== "Serviço" ? '674px' : '444px' };
+width: ${({ service }: props) => service !== "Serviço" ? '674px' : '444px'};
 padding: 24px 28px 24px 32px;
 background: #FFFFFF;
 border-radius: 8px;
     
+    label{
+        /* montserrat 14 */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        display: flex;
+        align-items: center;
+        margin-top: 16px;
+        /* Gray 2 */
+        color: #4F4F4F;
+    }
+
+    .upload{
+        width: 135px;
+        border-radius: 8px;
+        height: 34px;
+        overflow: hidden;
+        position: relative;
+        background-color: #2F80ED;
+        float: left;
+        margin-bottom: 15px;
+        
+        input {
+            display: block !important;
+            width: 200px !important;
+            height: 57px !important;
+            opacity: 0 !important;
+            overflow: hidden !important;
+            cursor: pointer;
+        }
+
+        .inputFileOverlay {
+            position: absolute;
+            width: 100%;
+            color: #FFFFFF;
+            font-family: 'Poppins';
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: center;
+        }
+    }
+
     > .green{
         font-family: 'Montserrat';
         font-style: normal;
@@ -127,20 +172,8 @@ border-radius: 8px;
         border-radius: 8px;
     }
     .file{
+        text-decoration: none;
         border: none;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 8px;
-
-        height: 34px;
-        /* Sistema/Azul */
-        background: #2F80ED;
-        border-radius: 8px;
-        /* Inside auto layout */
-        flex: none;
-        order: 0;
-        flex-grow: 0;
     }
     > textarea{
         padding: 14px 18px;
@@ -174,7 +207,6 @@ border-radius: 8px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         a{
             cursor: pointer;
         }
@@ -329,10 +361,36 @@ border-radius: 8px;
 
     }
 `
+const EditingArea = styled.div`
+position: relative;
+width: 576px;
+height: 240px;
+margin-bottom: 32px;
+box-sizing: border-box;
+border: 1px solid rgba(66, 82, 110, 0.25);
+box-shadow: inset 0px 1px 3px #DDDDDD;
+border-radius: 10px;
+
+
+width: 547px;
+height: 212px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 149.9%;
+/* or 21px */
+/* Tons de cinza/Cinza 900 */
+color: #212121;
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;`
 
 
 
-export default{
+export default {
     ModalProntuario,
     ContainerModalProntuario,
+    EditingArea,
 }

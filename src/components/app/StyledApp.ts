@@ -35,7 +35,7 @@ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 `
 
 const LeftBar = styled.div`
-position: absolute;
+position: fixed;
 text-align: center;
 left: 0%;
 right: 0%;
