@@ -78,8 +78,9 @@ p{
 const Container = styled.div`
 /* Rectangle 284 */
 position: relative;
+z-index: 2;
 width: 1131px;
-height: 6288px;
+height: 6400px;
 left: 117px;
 top: 314px;
 /* Branco */
@@ -197,8 +198,9 @@ div{
 textarea{
     * input/ form */
     box-sizing: border-box;
-    width: 100%;
+    width: 900px;
     height: 149px;
+    padding: 25px;
     /* Branco */
     background: #FFFFFF;
     /* Gray 4 */
@@ -208,6 +210,15 @@ textarea{
     flex: none;
     order: 1;
     flex-grow: 0;
+    /* montserrat 14 */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    color: #C2C2C2;
 }`
 
 const QuestionsBox = styled.div`
@@ -239,27 +250,13 @@ color: #303030;
 .section {
     color: #2D9CDB;
     font-weight: 700;
+    display: block;
 }
 span{
     font-weight: 600;
 }
 
-textarea{
-    * input/ form */
-    box-sizing: border-box;
-    width: 959px;
-    height: 149px;
-    margin-bottom: 32px;
-    /* Branco */
-    background: #FFFFFF;
-    /* Gray 4 */
-    border: 1px solid #BDBDBD;
-    border-radius: 8px;
-    /* Inside auto layout */
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-}
+
 
 .comment{
     /* Input */
@@ -297,6 +294,79 @@ width: 965px;
 .section {
     color: #2D9CDB;
     font-weight: 700;
+}
+
+div{
+    display: flex;
+    justify-content: left;
+    gap: 24px;
+    margin-top: 21px;
+
+    .fill-button{
+        /* btn */
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 12px 0px 20px;
+        gap: 23px;
+        width: 182px;
+        height: 48px;
+        /* Primária (Verde)/Verde Wexer */
+        background: #00995D;
+        /* tag */
+        box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 24px;
+
+        /* montserrat  16 bold */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Branco */
+        color: #FFFFFF;
+        /* Inside auto layout */
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+    }
+
+    .border-button{
+        box-sizing: border-box;
+        /* Auto layout */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 12px 0px 24px;
+        gap: 13px;
+        width: 164px;
+        height: 48px;
+        /* Primária (Verde)/Verde Wexer */
+        border: 1px solid #00995D;
+        border-radius: 24px;
+
+        /* montserrat  16 bold */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Primária (Verde)/Verde Wexer */
+        color: #00995D;
+        /* Inside auto layout */
+        flex: none;
+        order: 0;
+        flex-grow: 0;
+    }
 }`
 
 const Triangulodir = styled.div`
@@ -360,7 +430,22 @@ display: flex;
 align-items: center;
 color: #C2C2C2;`
 
+const Footer = styled.div`
+position: relative;
+z-index:1;
+top: 200px;
+left: 80px;
+height: 460px;
+width: 120%;
+background: #E5E5E5;
+display: flex;
+justify-content: center;
+align-items: center;
 
+button{
+    position: absolute;
+    top: 300px;
+}`
 
 export default {
     Triangulodir,
@@ -376,4 +461,5 @@ export default {
     Comments,
     SectionTitle,
     Title,
+    Footer,
 }
