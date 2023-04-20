@@ -8,7 +8,7 @@ type submit = {
 }
 function LoginForm(){
     const {register, handleSubmit} = useForm<submit>();
-    const onSubmit = (d : submit) => alert(JSON.stringify(d));
+    const onSubmit = (data : submit) => alert(JSON.stringify(data));
 
     return(
         <S.FormData onSubmit={handleSubmit(onSubmit)}>

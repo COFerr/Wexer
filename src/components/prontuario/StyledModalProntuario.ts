@@ -372,7 +372,7 @@ box-shadow: inset 0px 1px 3px #DDDDDD;
 border-radius: 10px;
 
 
-width: 547px;
+min-width: 547px;
 height: 212px;
 font-family: 'Montserrat';
 font-style: normal;

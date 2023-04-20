@@ -73,9 +73,8 @@ button:focus-visible {
 }
 
 .ql-toolbar.ql-snow {
-  width: 450px;
-  border: none;  
-
+  min-width: 450px;
+  border: none;
   padding: 0;
 }
 .ql-container.ql-snow {
