@@ -8,25 +8,12 @@ import users from "./assets/images/users.svg"
 import Login from "./pages/login"
 import Prontuario from "./pages/prontuario"
 import AvaliacaoPsicologica from "./pages/avaliacaopsicologica"
-
+import Router from "./components/router"
 
 function App() {
   return(
     <>
-    <S.Flex>
-      <S.Logo src={greenLogo} alt='logo'></S.Logo>
-      <S.Around>
-        <S.Mask src = {mask} alt="mask"/>
-        <div><h2>Bem Vindo(a), Psicólogo</h2></div>
-      </S.Around>
-    </S.Flex>
-    <AvaliacaoPsicologica/>
-    <S.LeftBar>
-      <S.Mask src={v1} alt="vector"></S.Mask><br/>
-      <S.Mask src={v2} alt="vector"></S.Mask><br/>
-      <S.Mask src={config} alt="vector"></S.Mask><br/>
-      <S.Mask src={users} alt="vector"></S.Mask><br/>
-    </S.LeftBar>
+      <Router/>
     </>
     )
 }

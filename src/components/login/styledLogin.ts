@@ -5,6 +5,21 @@ text-align: center;
 background-color: #E5E5E5;
 width: 100vw;
 min-height: 110vh;
+
+a{
+    margin-top: 25px;
+    /* montserrat 18 */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* Branco */
+    color: #FFFFFF;
+}
 `
 const Logotipo = styled.img`
 position: absolute;
@@ -26,9 +41,8 @@ type props = {
     color: string;
 }
 const GreenBox = styled.div`
-display: block;
 text-align: center;
-position: absolute;
+position: relative;
 left: 27%;
 right: 0%;
 top: 12.5%;
@@ -38,7 +52,27 @@ height: 608px;
 width: 40%;
 border-radius: 16px;
 box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+
+div{
+    display: flex;
+    justify-content: center;
+
+    a{
+        /* montserrat 18 */
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Branco */
+        color: #FFFFFF;
+    }
+}
 `
+
 const FormData = styled.form`
 text-align: left;
 font-family: Roboto;

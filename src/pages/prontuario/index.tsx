@@ -1,18 +1,18 @@
 import S from "../../components/prontuario/StyledProntuario"
 import image from "../../assets/react.svg"
 import { useState } from "react"
-import glass from "../../assets/glass.svg"
-import suitcase from "../../assets/case.svg"
-import user from '../../assets/business.svg'
-import business from '../../assets/business.svg'
-import book from "../../assets/book.svg"
+import glass from "../../assets/images/glass.svg"
+import suitcase from "../../assets/images/case.svg"
+import user from '../../assets/images/business.svg'
+import business from '../../assets/images/business.svg'
+import book from "../../assets/images/book.svg"
 import ModalProntuario from "../../components/prontuario/ModalProntuario"
-import sessao from "../../assets/sessao.svg"
-import pencil from "../../assets/pencil.svg"
-import junk from "../../assets/junk.svg"
-import fato from "../../assets/fatorelevante.svg"
-import anexo from "../../assets/anexo.svg"
-import avaliacao from "../../assets/avaliacaopsicologica.svg"
+import sessao from "../../assets/images/sessao.svg"
+import pencil from "../../assets/images/pencil.svg"
+import junk from "../../assets/images/junk.svg"
+import fato from "../../assets/images/fatorelevante.svg"
+import anexo from "../../assets/images/anexo.svg"
+import avaliacao from "../../assets/images/avaliacaopsicologica.svg"
 
 
 type props = {

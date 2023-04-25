@@ -3,9 +3,11 @@ import { useState } from 'react'
 import React from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import close from "../../assets/close.svg"
+import close from "../../assets/images/close.svg"
 import EditorToolbar, { modules, formats } from "./QuillToolbar";
 import "react-quill/dist/quill.snow.css";
+import { useNavigate } from "react-router-dom";
+
 
 type props = {
     service: 'Sessão' | 'Fato relevante' | 'Anexo' | 'Avaliação Psicológica' | "Anotações Pessoais" | "Serviço" | '';
@@ -15,6 +17,7 @@ type props = {
 
 function ModalProntuario({ service, modalState }: props): JSX.Element {
     const [value, setValue] = useState('')
+    const Navigate = useNavigate()
     return (
         <S.ModalProntuario service={service}>
             <S.ContainerModalProntuario service={service} >
@@ -131,7 +134,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         <div><p>*Campos obrigatórios</p></div>
                         <div>
                             <a className="cancel">cancelar</a>
-                            {service !== 'Avaliação Psicológica' ? <a className="confirm">criar</a> : <a className="confirm">prosseguir</a>}
+                            {service !== 'Avaliação Psicológica' ? <a className="confirm">criar</a> : <a className="confirm" onClick={() => {Navigate('/avaliacao_psicologica')}}>prosseguir</a>}
                         </div>
                     </footer> :
                     <button>Salvar</button>}

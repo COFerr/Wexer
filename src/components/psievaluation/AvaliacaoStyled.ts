@@ -298,7 +298,7 @@ const SectionTitle = styled.div`
     justify-content: left;
     gap: 24px;
     margin-top: 21px;
-    margin-left: 28px;
+
 
     .fill-button {
       /* btn */
