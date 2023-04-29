@@ -25,10 +25,10 @@ const Logotipo = styled.img`
 position: absolute;
 left: -5.72%;
 right: 70.86%;
-top: 4.92%;
+top: 16px;
 bottom: 21.99%;
 Width: 33%;
-Height: 57%`
+Height: 75%`
 
 const Logomarca = styled.img`
 height: 127.42px;
@@ -45,7 +45,7 @@ text-align: center;
 position: relative;
 left: 27%;
 right: 0%;
-top: 12.5%;
+margin-top: -100px;
 bottom: 0%;
 background: ${({color}:props) => color};
 height: 608px;
@@ -56,7 +56,24 @@ box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
 div{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 
+    >span{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #00995D;
+    }
+    >p{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #00995D;
+    }
     a{
         /* montserrat 18 */
         font-family: 'Montserrat';
@@ -66,7 +83,7 @@ div{
         line-height: 22px;
         display: flex;
         align-items: center;
-        text-align: center;
+        justify-content: center;
         /* Branco */
         color: #FFFFFF;
     }
@@ -76,9 +93,34 @@ div{
 const FormData = styled.form`
 text-align: left;
 font-family: Roboto;
-color:white;
+color: white;
 width: 60%;
 padding-left: 20%`
+
+const RegisterData = styled.form`
+text-align: left;
+font-family: Roboto;
+color: 'black';
+width: 60%;
+padding-left: 20%;
+
+div{
+    display: flex;
+    align-items: flex-end;
+}
+`
+
+const Continue = styled.button`
+box-sizing: border-box;
+text-algin: center;
+background: #00995D;
+width: 50%;
+height: 48px;
+/* Branco */
+color: white;
+border: 1px solid #FFFFFF;
+border-radius: 24px;
+margin-top: 31px;`
 
 const Input = styled.input`
 box-sizing: border-box;
@@ -110,6 +152,8 @@ export default {
     Logomarca,
     GreenBox,
     FormData,
+    RegisterData,
+    Continue,
     Input,
     Login,
 }

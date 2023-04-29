@@ -7,6 +7,7 @@ import close from "../../assets/images/close.svg"
 import EditorToolbar, { modules, formats } from "./QuillToolbar";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 
 type props = {
@@ -14,14 +15,19 @@ type props = {
     modalState: () => void;
 }
 
+const onSubmit = (data : InputEvent ) => {alert(JSON.stringify(data))};
+
+
 
 function ModalProntuario({ service, modalState }: props): JSX.Element {
     const [value, setValue] = useState('')
     const Navigate = useNavigate()
+    const {register, handleSubmit} = useForm<InputEvent>();
     return (
         <S.ModalProntuario service={service}>
             <S.ContainerModalProntuario service={service} >
-                <div>
+                
+                <div className='service'>
                     {service === 'Sessão' && <h2>Nova Sessão</h2>}
                     {service === 'Fato relevante' && <h2>Novo Fato Relevante</h2>}
                     {service === 'Anexo' && <h2>Novo Anexo</h2>}
@@ -30,6 +36,8 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                     {service === 'Serviço' && <h2>Novo Serviço</h2>}
                     <a><img src={close} alt='vazio' onClick={modalState} /></a>
                 </div>
+                
+                <form onSubmit={handleSubmit(onSubmit)}>
                 {service === 'Sessão' &&
                     <>
                         <div className="flexleft"><span>1</span><p>Dados Gerais</p></div>
@@ -121,11 +129,11 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         <p className="green">CPF</p>
                         <p>000.000.000-00</p><br />
                         <label>Data inicial</label>
-                        <input></input>
+                        <input {...register('date')}></input>
                         <label>Serviço</label>
                         <select></select>
                         <label>Demandas e objetivos</label>
-                        <textarea placeholder="text" />
+                        <textarea placeholder="text" {...register("demands") }/>
                     </>
                 }
 
@@ -133,11 +141,12 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                     <footer>
                         <div><p>*Campos obrigatórios</p></div>
                         <div>
-                            <a className="cancel">cancelar</a>
-                            {service !== 'Avaliação Psicológica' ? <a className="confirm">criar</a> : <a className="confirm" onClick={() => {Navigate('/avaliacao_psicologica')}}>prosseguir</a>}
+                            <a className="cancel" onClick={modalState}>cancelar</a>
+                            {service !== 'Avaliação Psicológica' ? <button className="confirm" type="submit">criar</button> : <a className="confirm" onClick={() => {Navigate('/user/avaliacao_psicologica')}}>prosseguir</a>}
                         </div>
                     </footer> :
-                    <button>Salvar</button>}
+                    <button type='submit'>Salvar</button>}
+                    </form>
             </S.ContainerModalProntuario>
         </S.ModalProntuario>
     )

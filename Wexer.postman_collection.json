@@ -1,0 +1,807 @@
+{
+	"info": {
+		"_postman_id": "d154124b-d1de-4ee3-aafa-82acfb2019f4",
+		"name": "Wexer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste@teste.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/user/login",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar usuário",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste@teste2.com\",\r\n    \"password\": \"123456\",\r\n    \"name\": \"Teste Testa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/user",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar dados do usuário",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0ZSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNDMxNjM1LCJleHAiOjE2ODE1MTgwMzV9.jBIK1MCjrGYOseucAHd35V7C26DFR_jy2lOmVuH8fu8",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/user",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar usuário",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0ZSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNDMyNTI4LCJleHAiOjE2ODE1MTg5Mjh9.KyVcBo2aLf7SfY9ovMwVtcbHuiXZM1oVZJtW9ow4Kp8",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste@teste.com\",\r\n    \"password\": \"123456\",\r\n    \"name\": \"Teste Testa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/user",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Timeline/Prontuário",
+			"item": [
+				{
+					"name": "Criar Timeline",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0ZSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNDMxNjM1LCJleHAiOjE2ODE1MTgwMzV9.jBIK1MCjrGYOseucAHd35V7C26DFR_jy2lOmVuH8fu8",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"patientId\": \"64348d31d1f55efc1d6dcdda\",\r\n    \"serviceName\": \"Novo Serviço\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/timeline",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"timeline"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Timeline",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0ZSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNDMxNjM1LCJleHAiOjE2ODE1MTgwMzV9.jBIK1MCjrGYOseucAHd35V7C26DFR_jy2lOmVuH8fu8",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/timeline/64389c9bd6c3d1c61a8a6b21",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"timeline",
+								"64389c9bd6c3d1c61a8a6b21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Ocorrência",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0ZSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNDMxNjM1LCJleHAiOjE2ODE1MTgwMzV9.jBIK1MCjrGYOseucAHd35V7C26DFR_jy2lOmVuH8fu8",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/timeline/6438810edc67c006c954c71f/occurrence/643884ff7ca818814c98397d",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"timeline",
+								"6438810edc67c006c954c71f",
+								"occurrence",
+								"643884ff7ca818814c98397d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todas as timelines",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0ZSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNDMxNjM1LCJleHAiOjE2ODE1MTgwMzV9.jBIK1MCjrGYOseucAHd35V7C26DFR_jy2lOmVuH8fu8",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/timeline",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"timeline"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar uma timeline",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0ZSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNDMxNjM1LCJleHAiOjE2ODE1MTgwMzV9.jBIK1MCjrGYOseucAHd35V7C26DFR_jy2lOmVuH8fu8",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/timeline/6438810edc67c006c954c71f",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"timeline",
+								"6438810edc67c006c954c71f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Timeline",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0ZSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNDMxNjM1LCJleHAiOjE2ODE1MTgwMzV9.jBIK1MCjrGYOseucAHd35V7C26DFR_jy2lOmVuH8fu8",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceName\": \"Porte de arma\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/timeline/6438810edc67c006c954c71f",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"timeline",
+								"6438810edc67c006c954c71f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Paciente",
+			"item": [
+				{
+					"name": "Criar Paciente",
+					"request": {
+						"auth": {
+							"type": "apikey"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ4YjRhZDFmNTVlZmMxZDZkY2RkOCIsIm5hbWUiOiJBbGJlcnRvIFRpbcOzdGVvIiwiZW1haWwiOiJhbGJlcnRvLnBwdGltb3Rlb0BnbWFpbC5jb20iLCJpYXQiOjE2ODE0MjQ0NjYsImV4cCI6MTY4MTUxMDg2Nn0.KEvJ0J8Lojx0O3kV8wrpzV8C9V-4_i2zjjWTJmxxVKM",
+								"description": "x-",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Paciente Teste\",\r\n    \"profession\": \"Professor de Programação\",\r\n    \"schooling\": \"Superior\",\r\n    \"demands\": \"Paciente está buscando tratamento para dores crônicas nas costas.\",\r\n    \"personalAnnotations\": \"Paciente relatou histórico de problemas de saúde na família. Complexo\",\r\n    \"birthdate\": \"1994-04-05T22:24:14.945Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/patient",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar Dados do Paciente",
+					"request": {
+						"auth": {
+							"type": "apikey"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ4YjRhZDFmNTVlZmMxZDZkY2RkOCIsIm5hbWUiOiJBbGJlcnRvIFRpbcOzdGVvIiwiZW1haWwiOiJhbGJlcnRvLnBwdGltb3Rlb0BnbWFpbC5jb20iLCJpYXQiOjE2ODE0MjQ0NjYsImV4cCI6MTY4MTUxMDg2Nn0.KEvJ0J8Lojx0O3kV8wrpzV8C9V-4_i2zjjWTJmxxVKM",
+								"description": "x-",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/patient/64348d31d1f55efc1d6dcdda",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"patient",
+								"64348d31d1f55efc1d6dcdda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Paciente",
+					"request": {
+						"auth": {
+							"type": "apikey"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ4YjRhZDFmNTVlZmMxZDZkY2RkOCIsIm5hbWUiOiJBbGJlcnRvIFRpbcOzdGVvIiwiZW1haWwiOiJhbGJlcnRvLnBwdGltb3Rlb0BnbWFpbC5jb20iLCJpYXQiOjE2ODE0MjQ0NjYsImV4cCI6MTY4MTUxMDg2Nn0.KEvJ0J8Lojx0O3kV8wrpzV8C9V-4_i2zjjWTJmxxVKM",
+								"description": "x-",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"schooling\": \"Superior\",\r\n    \"demands\": \"Paciente está buscando tratamento para dores crônicas nas costas.\",\r\n    \"personalAnnotations\": \"Paciente relatou histórico de problemas de saúde na família. Complexo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/patient/6438ab54880f70ef622221ee",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"patient",
+								"6438ab54880f70ef622221ee"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ocorrências (Itens da Timeline)",
+			"item": [
+				{
+					"name": "Salvar Nova Ocorrência de  Avaliação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ4YjRhZDFmNTVlZmMxZDZkY2RkOCIsIm5hbWUiOiJBbGJlcnRvIFRpbcOzdGVvIiwiZW1haWwiOiJhbGJlcnRvLnBwdGltb3Rlb0BnbWFpbC5jb20iLCJpYXQiOjE2ODE0MjQ0NjYsImV4cCI6MTY4MTUxMDg2Nn0.KEvJ0J8Lojx0O3kV8wrpzV8C9V-4_i2zjjWTJmxxVKM",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"assessment\",\r\n    \"timelineId\": \"64389c9bd6c3d1c61a8a6b21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/occurrence",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"occurrence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salvar Nova Sessão",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ4YjRhZDFmNTVlZmMxZDZkY2RkOCIsIm5hbWUiOiJBbGJlcnRvIFRpbcOzdGVvIiwiZW1haWwiOiJhbGJlcnRvLnBwdGltb3Rlb0BnbWFpbC5jb20iLCJpYXQiOjE2ODE0MjQ0NjYsImV4cCI6MTY4MTUxMDg2Nn0.KEvJ0J8Lojx0O3kV8wrpzV8C9V-4_i2zjjWTJmxxVKM",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"session\",\r\n    \"timelineId\": \"64389c9bd6c3d1c61a8a6b21\",\r\n    \"title\": \"Sessão teste\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec arcu ex, aliquet eu nulla at, fringilla condimentum ipsum. Fusce sollicitudin quis ex id dapibus. Aenean vitae porta orci. Donec blandit eleifend leo, vitae sollicitudin neque egestas vitae. In finibus tortor ut ullamcorper blandit.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/occurrence",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"occurrence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Sessão",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzQ4YjRhZDFmNTVlZmMxZDZkY2RkOCIsIm5hbWUiOiJBbGJlcnRvIFRpbcOzdGVvIiwiZW1haWwiOiJhbGJlcnRvLnBwdGltb3Rlb0BnbWFpbC5jb20iLCJpYXQiOjE2ODE0MjQ0NjYsImV4cCI6MTY4MTUxMDg2Nn0.KEvJ0J8Lojx0O3kV8wrpzV8C9V-4_i2zjjWTJmxxVKM",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"session\",\r\n    \"title\": \"Sessão teste 2\",\r\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec arcu ex, aliquet eu nulla at, fringilla condimentum ipsum. Fusce sollicitudin quis ex id dapibus. Aenean vitae porta orci. Donec blandit eleifend leo, vitae sollicitudin neque egestas vitae. In finibus tortor ut ullamcorper blandit.\",\r\n    \"payment\": {\r\n        \"value\": 120,\r\n        \"method\": \"PIX\",\r\n        \"status\": \"Pago\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/occurrence/64389d48d6c3d1c61a8a6b24",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"occurrence",
+								"64389d48d6c3d1c61a8a6b24"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Avaliação",
+			"item": [
+				{
+					"name": "Recuperar Avaliação",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0YSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNTY0NjM4LCJleHAiOjE2ODE2NTEwMzh9.AtMVwGFf_saBM3Ri7MQrJzI0j-tS4ZezehvIdN67exE",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/assessment/643884ff7ca818814c983977",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"assessment",
+								"643884ff7ca818814c983977"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salvar Avaliação de Entrevista",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0YSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNTY0NjM4LCJleHAiOjE2ODE2NTEwMzh9.AtMVwGFf_saBM3Ri7MQrJzI0j-tS4ZezehvIdN67exE",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"interview\": [\r\n        {\r\n            \"abstract\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu risus ac justo faucibus imperdiet. Praesent dignissim justo dui, ac semper libero dignissim pulvinar. Nunc elementum tortor lectus, facilisis sollicitudin neque volutpat at. Quisque viverra quam nunc, in posuere sem varius a. Quisque vel volutpat felis. Etiam id faucibus tortor.\"\r\n        },\r\n        {\r\n            \"question\": \"Qual é a sua idade?\",\r\n            \"textAnswer\": \"25 anos\"\r\n        },\r\n        {\r\n            \"question\": \"Você já teve algum problema de saúde mental?\",\r\n            \"optionAnswer\": \"Sim\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/assessment/643884ff7ca818814c983977",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"assessment",
+								"643884ff7ca818814c983977"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salvar Avaliação de Testes",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0YSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNTY0NjM4LCJleHAiOjE2ODE2NTEwMzh9.AtMVwGFf_saBM3Ri7MQrJzI0j-tS4ZezehvIdN67exE",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tests\": [\r\n        {\r\n            \"type\": \"attention\",\r\n            \"name\": \"Teste de Atenção Sustentada\",\r\n            \"points\": 72,\r\n            \"percentile\": 60,\r\n            \"result\": \"average\",\r\n            \"observation\": \"\"\r\n        },\r\n        {\r\n            \"type\": \"memory\",\r\n            \"name\": \"Teste de Memória Verbal\",\r\n            \"points\": 42,\r\n            \"percentile\": 30,\r\n            \"result\": \"low\",\r\n            \"observation\": \"O paciente apresentou dificuldades para recordar palavras\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/assessment/643884ff7ca818814c983979",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"assessment",
+								"643884ff7ca818814c983979"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Salvar Avaliação de Observação",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0Mzg5YzNjZDZjM2QxYzYxYThhNmIxZSIsIm5hbWUiOiJUZXN0ZSBUZXN0YSIsImVtYWlsIjoidGVzdGVAdGVzdGUuY29tIiwiaWF0IjoxNjgxNTY0NjM4LCJleHAiOjE2ODE2NTEwMzh9.AtMVwGFf_saBM3Ri7MQrJzI0j-tS4ZezehvIdN67exE",
+								"type": "default"
+							},
+							{
+								"key": "x-api-key",
+								"value": "1e7977ea-d97e-11ed-afa1-0242ac120002",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"observation\": \"O paciente se mostrou bastante cooperativo durante a avaliação\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wexer-example-backend.vercel.app/api/assessment/643884ff7ca818814c98397b",
+							"protocol": "https",
+							"host": [
+								"wexer-example-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"assessment",
+								"643884ff7ca818814c98397b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

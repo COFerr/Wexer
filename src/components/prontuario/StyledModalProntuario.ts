@@ -23,7 +23,28 @@ width: ${({ service }: props) => service !== "Serviço" ? '674px' : '444px'};
 padding: 24px 28px 24px 32px;
 background: #FFFFFF;
 border-radius: 8px;
-    
+
+.service{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a{
+        cursor: pointer;
+    }
+    label{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        display: flex;
+        align-items: center;
+        /* Gray 2 */
+        color: #4F4F4F;
+    }
+}
+
+form{
     label{
         /* montserrat 14 */
         font-family: 'Montserrat';
@@ -360,6 +381,7 @@ border-radius: 8px;
         color: #FFFFFF;
 
     }
+}
 `
 const EditingArea = styled.div`
 position: relative;

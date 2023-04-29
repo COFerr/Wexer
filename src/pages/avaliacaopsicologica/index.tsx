@@ -14,8 +14,11 @@ import EditorToolbar, {
   formats,
 } from "../../components/prontuario/QuillToolbar";
 import "react-quill/dist/quill.snow.css";
+import {useNavigate} from 'react-router-dom'
 
 function AvaliacaoPsicologica() {
+
+  const navigate = useNavigate()
   function scrollTop() {
     window.scrollTo(0, 0);
   }
@@ -148,7 +151,7 @@ function AvaliacaoPsicologica() {
               </S.SectionTitle>
             </S.QuestionsBox>
           </S.Container>
-          <button onClick={scrollTop}>^ Voltar para o topo</button>
+          <S.ScrollTop onClick={scrollTop}>^ Voltar para o topo</S.ScrollTop>
         </>
       )}
       {evalPhase === "middle" && (
@@ -314,7 +317,7 @@ function AvaliacaoPsicologica() {
                 <h1>Entrevista Psicológica</h1>
               </div>
               <div>
-                <button className="fill-button">vazio</button>
+                <button className="fill-button" onClick={()=>navigate('/user/prontuario')}>vazio</button>
               </div>
             </S.Head>
             <S.TextContainer>
@@ -326,13 +329,12 @@ function AvaliacaoPsicologica() {
             </S.TextContainer>
             <S.SectionTitle>
               <div>
-                <button className="fill-button">Vazio</button>
+                <button className="fill-button" onClick={()=> navigate('/user/prontuario')}>Vazio</button>
               </div>
             </S.SectionTitle>
           </S.ContainerMin>
         </>
       )}
-      )
     </>
   );
 }

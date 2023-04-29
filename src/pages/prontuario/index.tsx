@@ -1,5 +1,4 @@
 import S from "../../components/prontuario/StyledProntuario"
-import image from "../../assets/react.svg"
 import { useState } from "react"
 import glass from "../../assets/images/glass.svg"
 import suitcase from "../../assets/images/case.svg"

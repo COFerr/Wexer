@@ -84,11 +84,11 @@ const Container = styled.div`
   height: 6400px;
   left: 117px;
   margin-top: 140px;
-  margin-bottom: 115px;
+  margin-bottom: 94px;
   /* Branco */
   background: #ffffff;
   border-radius: 16px;
-`;
+`
 
 const Head = styled.div`
   height: 75px;
@@ -100,6 +100,13 @@ const Head = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-right: 20px;
+  }
   h1 {
     /* Entrevista */
     margin-left: 28px;
@@ -284,7 +291,7 @@ const Question = styled.div`
   .radio {
     margin-top: 10px;
   }
-`;
+`
 
 const SectionTitle = styled.div`
   width: 965px;
@@ -366,7 +373,11 @@ const SectionTitle = styled.div`
       flex-grow: 0;
     }
   }
-`;
+`
+
+const ScrollTop = styled.button`
+margin-left: 45%;
+margin-bottom: 144px;`
 
 const Triangulodir = styled.div`
   position: absolute;
@@ -431,7 +442,7 @@ const Comments = styled.textarea`
   display: flex;
   align-items: center;
   color: #c2c2c2;
-`;
+`
 
 const Footer = styled.div`
   position: relative;
@@ -668,6 +679,7 @@ export default {
   Question,
   Comments,
   SectionTitle,
+  ScrollTop,
   Title,
   Footer,
   ContainerMin,

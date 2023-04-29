@@ -1,6 +1,6 @@
 import {useForm} from 'react-hook-form'
 import S from "./styledLogin"
-
+import { useNavigate } from 'react-router-dom';
 
 type submit = {
     login: string;
@@ -8,7 +8,8 @@ type submit = {
 }
 function LoginForm(){
     const {register, handleSubmit} = useForm<submit>();
-    const onSubmit = (data : submit) => alert(JSON.stringify(data));
+    const onSubmit = (data : submit) => {alert(JSON.stringify(data)); navigate('/user/prontuario')};
+    const navigate = useNavigate()
 
     return(
         <S.FormData onSubmit={handleSubmit(onSubmit)}>

@@ -229,14 +229,14 @@ box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 border-radius: 8px;
 padding: 24px;
 
-& > div{
+div{
     height: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: 'Montserrat';
 
-    & > span {
+    span {
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 700;
@@ -249,7 +249,7 @@ padding: 24px;
         color: #212121;
     }
 
-    & > select{
+    select{
         width: 495px;
         height: 48px;
         background: #FFFFFF;
@@ -266,7 +266,7 @@ padding: 24px;
         /* Tons de cinza/Cinza 700 */
         color: #616161;
 
-        & > option {
+        option {
             /* montserrat 16 */
             font-family: 'Montserrat';
             font-style: normal;
@@ -281,7 +281,7 @@ padding: 24px;
         }
     }
 
-    & > img {
+    > img {
         box-sizing: border-box;
         /* Auto layout */
         display: flex;
@@ -301,7 +301,7 @@ padding: 24px;
         border-radius: 8px;
     }
 
-    & > a{
+    a{
         text-decoration: none;
         cursor: pointer;
         font-family: 'Montserrat';
@@ -315,24 +315,16 @@ padding: 24px;
         /* Tons de cinza/Cinza 900 */
         color: #212121;
          
-        & > img {
+        > img {
             box-sizing: border-box;
             /* Auto layout */
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            padding: 4px 8px;
             margin-right: 12px;
-            width: 32px;
-            height: 24px;
-            /* Branco */
-            background: #FFFFFF;
-            /* Primária (Verde)/verde mais forte */
-            border: 1px solid #017849;
-            /* tag */
-            box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.15);
-            border-radius: 8px;
+            height: 29px;
+            width: 24px;
         }    
     }
 }`

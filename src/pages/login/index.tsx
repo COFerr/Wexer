@@ -15,7 +15,7 @@ function Login(): JSX.Element {
         <>
           <S.Logomarca src={logo}></S.Logomarca>
           <LoginForm></LoginForm>
-          <div><Link to='/prontuario'>Cadastre-se gratuitamente</Link></div>
+          <div><Link to='/register'>Cadastre-se gratuitamente</Link></div>
         </>
       </Modal>      
     </S.Content>
