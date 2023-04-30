@@ -44,7 +44,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         <div>
                             <div>
                                 <label>Data*</label>
-                                <input className="data"></input>
+                                <input type="date" className="data"></input>
                             </div>
                             <div>
                                 <label>Hora de início*</label>
@@ -67,7 +67,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         <div>
                             <div>
                                 <label>Data*</label>
-                                <input className="data"></input>
+                                <input type="date" className="data"></input>
                             </div>
                             <div>
                                 <label>Título*</label>
@@ -82,7 +82,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         <div>
                             <div>
                                 <label>Data*</label>
-                                <input className='data'></input>
+                                <input type="date" className='data'></input>
                             </div>
                             <div>
                                 <label>Título*</label>
@@ -103,7 +103,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         <div>
                             <div>
                                 <label>Data*</label>
-                                <input className="data"></input>
+                                <input type="date" className="data"></input>
                             </div>
                         </div>
                         <div className="atention">
@@ -125,11 +125,11 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                 {service === 'Serviço' &&
                     <>
                         <p className="green">Paciente</p>
-                        <p>Nome Do Paciente</p>
+                        <p>{localStorage.getItem('patient')}</p>
                         <p className="green">CPF</p>
                         <p>000.000.000-00</p><br />
                         <label>Data inicial</label>
-                        <input {...register('date')}></input>
+                        <input type="date" {...register('date')}></input>
                         <label>Serviço</label>
                         <select></select>
                         <label>Demandas e objetivos</label>

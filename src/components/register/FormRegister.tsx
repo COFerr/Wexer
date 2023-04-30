@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import S from "../login/styledLogin";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { registerService } from "../../components/services/register-service";
 
 type submit = {
   name: string;
@@ -13,12 +14,32 @@ type submit = {
 type phase = 'name' | 'password'
 function FormRegister() {
   const { register, handleSubmit } = useForm<submit>();
+  const[email, setEmail] = useState('')
+  const[password, setPassword] = useState('')
+  const[name, setName] = useState('')
   const [user, setUser] = useState<submit>({name:"", email: "", password:"", confirm: ""})
   const[phase, setPhase] = useState<phase>('name')
+
   const onSubmit = (data: submit) => {
-    alert(JSON.stringify(data));
-    user.confirm === user.password ? alert('senhas iguais') : alert('senhas diferentes')
-    navigate("/");
+    user.confirm === user.password ?
+    //alert(email+" "+ password + " " + name);
+    newRegister()
+     : alert('senhas diferentes')
+  };
+
+  const[error,setError] = useState('')
+  const newRegister = async () => {
+    try {
+      const response = await registerService({ email, password, name });
+      navigate("/");
+    } catch (er) {
+      if (er instanceof Error) {
+        alert("Falha no cadastro. Por favor, tente novamente em alguns instantes")
+        setError(er?.message);
+        return;
+      }
+      setError("Deu erro");
+    }
   };
   const navigate = useNavigate();
 
@@ -29,13 +50,20 @@ function FormRegister() {
       <label>
         Nome
         <br />
-        <S.Input {...register("name")} onChange={(event : React.ChangeEvent<HTMLInputElement>) => setUser({...user, 'name': event.target.value})}/>
+        <S.Input 
+        onChange={(event : React.ChangeEvent<HTMLInputElement>) => {
+          setUser({...user, 'name': event.target.value});
+          setName(event.target.value);
+          }}/>
         <br />
       </label>
       <label>
         email
         <br />
-        <S.Input {...register("email")} onChange={(event : React.ChangeEvent<HTMLInputElement>) => setUser({...user, 'email': event.target.value})}/>
+        <S.Input onChange={(event : React.ChangeEvent<HTMLInputElement>) => {
+          setUser({...user, 'email': event.target.value});
+          setEmail(event.target.value);
+          }}/>
         <br />
       </label>
       <div>
@@ -47,13 +75,16 @@ function FormRegister() {
       <label>
         Senha
         <br />
-        <S.Input {...register("password")} onChange={(event : React.ChangeEvent<HTMLInputElement>)=> setUser({...user, 'password': event.target.value})}/>
+        <S.Input onChange={(event : React.ChangeEvent<HTMLInputElement>)=> {
+          setUser({...user, 'password': event.target.value});
+          setPassword(event.target.value)
+          }}/>
         <br />
       </label>
       <label>
         Confirmação
         <br />
-        <S.Input {...register("confirm")} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setUser({...user, 'confirm':event.target.value})}/>
+        <S.Input onChange={(event: React.ChangeEvent<HTMLInputElement>) => setUser({...user, 'confirm':event.target.value})}/>
         <br />
       </label>
       <div>

@@ -14,7 +14,7 @@ type props = {
 }
 const TaskBar = styled.div`
 position: absolute;
-width: 85%;
+width: 1288px;
 height: 69px;
 left: 138px;
 top: 107px;
@@ -117,7 +117,7 @@ const InfoPosition = styled.div`
 position: absolute;
 top: 203px;
 left: 138px;
-width: 23%`
+width: 340px`
 
 const Info = styled.div`
 border: 1px solid #E0E0E0;
@@ -214,7 +214,7 @@ const ServicePosition = styled.div`
 position: absolute;
 top: 203px;
 left: 495px;
-width: 62%;`
+width: 924px;`
 
 const AddService = styled.div`
 box-sizing: border-box;
