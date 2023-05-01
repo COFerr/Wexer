@@ -187,8 +187,8 @@ function Prontuario() {
                       </O.OccurrenceBox>
                     )}
                     {occurence.type === "attachment" && (
-                      <O.OccurrenceBox color="#00995D">
-                        <img src={sessao} alt="occurence" />
+                      <O.OccurrenceBox color="#9D28AC">
+                        <img src={anexo} alt="occurence" />
                         <div className="OccurrenceContent">
                           <h2>{occurence.title}</h2>
                           <span>{occurence.createdOn}</span>
