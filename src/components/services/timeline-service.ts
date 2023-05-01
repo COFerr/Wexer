@@ -30,7 +30,7 @@ type timeline = {
   timeline: {
     _id: string;
     patientId: string;
-    occurrences: occurrence[] | string[];
+    occurrences: occurrence[];
     serviceName: string;
     createdOn: string;
     modifiedOn: string;

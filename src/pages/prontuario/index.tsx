@@ -40,15 +40,6 @@ type patient = {
   personalAnnotations: string;
 };
 
-type event = {
-  _id: string;
-  patientId: string;
-  occurrences: occurrence[];
-  serviceName: string;
-  createdOn: string;
-  modifiedOn: string;
-};
-
 type occurrence = {
   payment: {};
   _id: string;
@@ -65,12 +56,14 @@ type timeline = {
   timeline: {
     _id: string;
     patientId: string;
-    occurrences: occurrence[] | string[];
+    occurrences: occurrence[];
     serviceName: string;
     createdOn: string;
     modifiedOn: string;
   };
 };
+
+const userNames = ["Jesse", "Tom", "Anna"];
 
 function Prontuario() {
   const [error, setError] = useState("");
@@ -94,11 +87,6 @@ function Prontuario() {
     try {
       const response = await timelineService.get("643dc6a38df02c8bf2aab8f4");
       setTimeLine(response);
-      alert(
-        "essa timeline tem " +
-          response.timeline.occurrences.length +
-          " ocorrências"
-      );
     } catch (er) {
       if (er instanceof Error) {
         alert("Timeline não encontrada");
@@ -186,25 +174,40 @@ function Prontuario() {
                   </a>
                 </div>
               </S.AddService>
-              <O.OccurrenceBox color="#00995D">
-                <img src={sessao} alt="occurence" />
-                <div className="OccurrenceContent">
-                  <h2>{timeLine?.timeline.occurrences[0].title}</h2>
-                  <span>{ocorrencias[0].createdOn}</span>
-                  <p>{ocorrencias[0].content}</p>
-                </div>
-              </O.OccurrenceBox>
-              <O.OccurrenceBox color="#2F80ED">
-                <img src={fato} alt="occurence" />
-                <div className="OccurrenceContent">
-                  <h2>Fato Relevante</h2>
-                  <span>{new Date().toDateString()}</span>
-                  <p>
-                    lorem ipsum abcde lorem ipsum abcde lorem ipsum abcde lorem
-                    ipsum abcde lorem ipsum abcde lorem ipsum abcde
-                  </p>
-                </div>
-              </O.OccurrenceBox>
+                {timeLine?.timeline.occurrences.map((occurence, index) => (
+                  <>
+                    {occurence.type === "session" && (
+                      <O.OccurrenceBox color="#00995D">
+                        <img src={sessao} alt="occurence" />
+                        <div className="OccurrenceContent">
+                          <h2>{occurence.title}</h2>
+                          <span>{occurence.createdOn}</span>
+                          <p>{occurence.content}</p>
+                        </div>
+                      </O.OccurrenceBox>
+                    )}
+                    {occurence.type === "attachment" && (
+                      <O.OccurrenceBox color="#00995D">
+                        <img src={sessao} alt="occurence" />
+                        <div className="OccurrenceContent">
+                          <h2>{occurence.title}</h2>
+                          <span>{occurence.createdOn}</span>
+                          <p>{occurence.content}</p>
+                        </div>
+                      </O.OccurrenceBox>
+                    )}
+                    {occurence.type === "relevant_fact" && (
+                      <O.OccurrenceBox color="#2F80ED">
+                        <img src={fato} alt="occurence" />
+                        <div className="OccurrenceContent">
+                          <h2>{occurence.title}</h2>
+                          <span>{occurence.createdOn}</span>
+                          <p>{occurence.content}</p>
+                        </div>
+                      </O.OccurrenceBox>
+                    )}
+                  </>
+                ))}
             </S.ServicePosition>
             <S.InfoPosition>
               <S.Info>
