@@ -32,10 +32,12 @@ function LoginForm() {
   const login = async () => {
     try {
       const response = await loginService({ email, password });
+      
       localStorage.setItem("token", response.token);
       console.log(localStorage.getItem("token"));
-      userFields()
-      navigate("/user/prontuario");
+      userFields();
+      setTimeout(() => {
+      navigate("/user/prontuario");}, 1000);
     } catch (er) {
       if (er instanceof Error) {
         alert("Usuário e/ou senha incorretos.")

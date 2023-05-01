@@ -12,6 +12,9 @@ import junk from "../../assets/images/junk.svg";
 import fato from "../../assets/images/fatorelevante.svg";
 import anexo from "../../assets/images/anexo.svg";
 import avaliacao from "../../assets/images/avaliacaopsicologica.svg";
+import O from "../../components/prontuario/StyledOccurence";
+import { timelineService } from "../../components/services/timeline-service";
+import { ocorrencias } from "../../assets/files/ocorrências";
 
 import { pacientDataService } from "../../components/services/pacient_data-service";
 
@@ -27,23 +30,56 @@ type props = {
 };
 
 type patient = {
-    _id: string,
-    userId: string,
-    name: string,
-    birthdate: string,
-    profession: string,
-    schooling: string,
-    demands: string,
-    personalAnnotations: string
-}
+  _id: string;
+  userId: string;
+  name: string;
+  birthdate: string;
+  profession: string;
+  schooling: string;
+  demands: string;
+  personalAnnotations: string;
+};
+
+type event = {
+  _id: string;
+  patientId: string;
+  occurrences: occurrence[];
+  serviceName: string;
+  createdOn: string;
+  modifiedOn: string;
+};
+
+type occurrence = {
+  payment: {};
+  _id: string;
+  title: string;
+  content: string;
+  files: [];
+  type: string;
+  createdOn: string;
+  modifiedOn: string;
+  __v: number;
+};
+
+type timeline = {
+  timeline: {
+    _id: string;
+    patientId: string;
+    occurrences: occurrence[] | string[];
+    serviceName: string;
+    createdOn: string;
+    modifiedOn: string;
+  };
+};
+
 function Prontuario() {
-  const[error, setError] = useState('')
-  const[patient, setPatient] = useState<patient>()
-  const patientFields  = async () => {
+  const [error, setError] = useState("");
+  const [patient, setPatient] = useState<patient>();
+  const patientFields = async () => {
     try {
       const response = await pacientDataService();
-      setPatient(response)
-      localStorage.setItem('patient', response?.name)
+      setPatient(response);
+      localStorage.setItem("patient", response?.name);
     } catch (er) {
       if (er instanceof Error) {
         alert("Paciente não encontrado");
@@ -52,12 +88,34 @@ function Prontuario() {
       }
       setError("Deu erro");
     }
-  }
-  useEffect(
-    () => {
-        patientFields()
+  };
+  const [timeLine, setTimeLine] = useState<timeline>();
+  const timeLineFields = async () => {
+    try {
+      const response = await timelineService.get("643dc6a38df02c8bf2aab8f4");
+      setTimeLine(response);
+      alert(
+        "essa timeline tem " +
+          response.timeline.occurrences.length +
+          " ocorrências"
+      );
+    } catch (er) {
+      if (er instanceof Error) {
+        alert("Timeline não encontrada");
+        setError(er?.message);
+        return;
+      }
+      setError("Deu erro");
     }
-    ,[]);
+  };
+  useEffect(() => {
+    patientFields();
+    timeLineFields();
+  }, []);
+
+  useEffect(() => {
+    console.log(JSON.stringify(timeLine?.timeline.occurrences[0]));
+  }, [timeLine]);
 
   const [prontuario, setProntuario] = useState(false);
   const [modal, setModal] = useState<props>({ service: "" });
@@ -128,6 +186,25 @@ function Prontuario() {
                   </a>
                 </div>
               </S.AddService>
+              <O.OccurrenceBox color="#00995D">
+                <img src={sessao} alt="occurence" />
+                <div className="OccurrenceContent">
+                  <h2>{timeLine?.timeline.occurrences[0].title}</h2>
+                  <span>{ocorrencias[0].createdOn}</span>
+                  <p>{ocorrencias[0].content}</p>
+                </div>
+              </O.OccurrenceBox>
+              <O.OccurrenceBox color="#2F80ED">
+                <img src={fato} alt="occurence" />
+                <div className="OccurrenceContent">
+                  <h2>Fato Relevante</h2>
+                  <span>{new Date().toDateString()}</span>
+                  <p>
+                    lorem ipsum abcde lorem ipsum abcde lorem ipsum abcde lorem
+                    ipsum abcde lorem ipsum abcde lorem ipsum abcde
+                  </p>
+                </div>
+              </O.OccurrenceBox>
             </S.ServicePosition>
             <S.InfoPosition>
               <S.Info>
@@ -139,7 +216,12 @@ function Prontuario() {
                 <p>
                   <img src={business} alt="sticker" /> Nascimento
                 </p>
-                <h5>{patient?.birthdate && new Date(patient.birthdate.split('-').join('/').split('T')[0]).toLocaleDateString('pt-BR')}</h5>
+                <h5>
+                  {patient?.birthdate &&
+                    new Date(
+                      patient.birthdate.split("-").join("/").split("T")[0]
+                    ).toLocaleDateString("pt-BR")}
+                </h5>
                 <p>
                   <img src={suitcase} alt="sticker" /> profissão
                 </p>
@@ -158,9 +240,7 @@ function Prontuario() {
                     onClick={() => activateModal({ service: "Serviço" })}
                   />
                 </div>
-                <h4>
-                  {patient?.demands}
-                </h4>
+                <h4>{patient?.demands}</h4>
               </S.Info>
               <S.Info>
                 <div>
@@ -173,9 +253,7 @@ function Prontuario() {
                     }
                   />
                 </div>
-                <h4>
-                  {patient?.personalAnnotations}
-                </h4>
+                <h4>{patient?.personalAnnotations}</h4>
               </S.Info>
             </S.InfoPosition>
           </>

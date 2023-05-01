@@ -10,7 +10,6 @@ import {useEffect, useState} from 'react'
 
 function Layout() {
   return(
-
     <>
     <S.Flex>
       <S.Logo src={greenLogo} alt='logo'></S.Logo>
