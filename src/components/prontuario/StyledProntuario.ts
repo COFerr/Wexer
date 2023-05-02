@@ -6,6 +6,7 @@ padding-left: 138px;
 padding-right: 84px;
 display: flex;
 justify-content: space-around;
+alig-items: flex-start;
 flex-wrap: wrap;`
 
 
@@ -14,10 +15,10 @@ type props = {
 }
 const TaskBar = styled.div`
 position: absolute;
-width: 1288px;
-height: 69px;
+top: 90px;
 left: 138px;
-top: 107px;
+width: 1256px;
+height: 69px;
 display: flex;
 justify-content: space-between;
 align-items: center;
@@ -114,9 +115,8 @@ padding: 8px 24px 8px 8px;
 `
 
 const InfoPosition = styled.div`
-position: absolute;
-top: 203px;
-left: 138px;
+position: relative;
+margin-top: 93px;
 width: 340px`
 
 const Info = styled.div`
@@ -211,10 +211,101 @@ width: 100%;
 }`
 
 const ServicePosition = styled.div`
-position: absolute;
-top: 203px;
-left: 495px;
-width: 924px;`
+position: relative;
+margin-top: 93px;
+margin-bottom: 61px;
+margin-left: 24px;
+width: 924px;
+
+.splitter{
+    display: flex;
+    align-items: center;
+    div{
+        display: block;
+    }
+    hr{
+        width: 770px;
+        height: 1px;
+        margin-top: 25px;
+    }
+    p{
+        margin-bottom:0;
+    }
+    /* 14 px medium */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    /* Tons de cinza/Cinza 600 */
+    color: #757575;
+    margin: 0;
+    padding: 0;
+}
+
+.session{
+    z-index: 1;
+    display: flex;
+    position: absolute;
+    width: 4px;
+    left: 45px;
+    background-color: #00995D;
+    color: #00995D;
+    padding-bottom: 20px;
+    
+    hr{
+        width: 2px;
+        height: 5px;
+    }
+}
+
+.fact{
+    display: flex;
+    position: absolute;
+    width: 4px;
+    left: 45px;
+    background-color: #2F80ED;
+    color: #2F80ED;
+    padding-bottom: 20px;
+    
+    hr{
+        width: 2px;
+        height: 5px;
+        
+    }
+}
+.attachment{
+    display: flex;
+    position: absolute;
+    width: 4px;
+    left: 45px;
+    background-color: #9D28AC;
+    color: #9D28AC;
+    padding-bottom: 20px;
+    
+    hr{
+        width: 2px;
+        height: 5px;
+        
+    }
+}
+
+.eval{
+    display: flex;
+    position: absolute;
+    width: 4px;
+    left: 45px;
+    background-color: #EA1E61;
+    color: #EA1E61;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    hr{
+        width: 2px;
+        height: 5px;
+        
+    }
+}`
 
 const AddService = styled.div`
 box-sizing: border-box;
@@ -282,6 +373,7 @@ div{
     }
 
     > img {
+        cursor: pointer;
         box-sizing: border-box;
         /* Auto layout */
         display: flex;
@@ -295,10 +387,17 @@ div{
         /* Branco */
         background: #FFFFFF;
         /* Primária (Verde)/verde mais forte */
-        border: 1px solid #017849;
         /* tag */
         box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.15);
         border-radius: 8px;
+    }
+
+    .edit{
+        border: 1px solid #017849;
+    }
+
+    .red{
+        border: 1px solid #EB5757;
     }
 
     a{

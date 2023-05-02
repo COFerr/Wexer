@@ -11,15 +11,18 @@ margin-top: 48px;
 
 img{
     position: absolute;
-    height: 48px;
-    width: 48px;
+    background: ${({color}:props) => color};
+    height: 38px;
+    width: 38px;
+    padding: 5px;
     left: 24px;
     top: 0px;
-    z-index: 2;
-    border-radius: 0px;
+    z-index: 3;
+    border-radius: 50%;
 }
 .OccurrenceContent{
     position: relative;
+    z-index: 2;
     top: 24px;
     padding: 30px 19px 24px 24px;
     /* montserrat 16 */

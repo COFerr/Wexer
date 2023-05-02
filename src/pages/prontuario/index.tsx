@@ -7,16 +7,20 @@ import business from "../../assets/images/business.svg";
 import book from "../../assets/images/book.svg";
 import ModalProntuario from "../../components/prontuario/ModalProntuario";
 import sessao from "../../assets/images/sessao.svg";
+import session_occurrence from "../../assets/images/session_occurrence.svg"
 import pencil from "../../assets/images/pencil.svg";
 import junk from "../../assets/images/junk.svg";
 import fato from "../../assets/images/fatorelevante.svg";
+import fact_occurrence from "../../assets/images/fact_occurrence.svg"
 import anexo from "../../assets/images/anexo.svg";
+import atttachment_occurrence from "../../assets/images/attachment_occurrence.svg"
 import avaliacao from "../../assets/images/avaliacaopsicologica.svg";
+import eval_occurrence from "../../assets/images/eval_occurrence.svg"
 import O from "../../components/prontuario/StyledOccurence";
 import { timelineService } from "../../components/services/timeline-service";
 import { ocorrencias } from "../../assets/files/ocorrências";
-
 import { pacientDataService } from "../../components/services/pacient_data-service";
+
 
 type props = {
   service:
@@ -135,80 +139,6 @@ function Prontuario() {
         </S.TaskBar>
         {!prontuario && (
           <>
-            <S.ServicePosition>
-              <S.AddService>
-                <div>
-                  <span>serviço:</span>
-                  <select name="select" defaultValue="Novo acompanhamento">
-                    <option value="valor1">Novo acompanhamento</option>
-                    <option value="valor2">Valor 2</option>
-                    <option value="valor3">Valor 3</option>
-                  </select>
-                  <span>data inicial:</span> 18/10/2022
-                  <img src={pencil} alt="image" />
-                  <img src={junk} alt="image" />
-                </div>
-                <hr />
-                <div>
-                  <a onClick={() => activateModal({ service: "Sessão" })}>
-                    <img src={sessao} alt="image" />
-                    Sessão
-                  </a>
-                  <a
-                    onClick={() => activateModal({ service: "Fato relevante" })}
-                  >
-                    <img src={fato} alt="image" />
-                    Fato Relevante
-                  </a>
-                  <a onClick={() => activateModal({ service: "Anexo" })}>
-                    <img src={anexo} alt="image" />
-                    Anexo
-                  </a>
-                  <a
-                    onClick={() =>
-                      activateModal({ service: "Avaliação Psicológica" })
-                    }
-                  >
-                    <img src={avaliacao} alt="image" />
-                    Avaliação Psicológica
-                  </a>
-                </div>
-              </S.AddService>
-                {timeLine?.timeline.occurrences.map((occurence, index) => (
-                  <>
-                    {occurence.type === "session" && (
-                      <O.OccurrenceBox color="#00995D">
-                        <img src={sessao} alt="occurence" />
-                        <div className="OccurrenceContent">
-                          <h2>{occurence.title}</h2>
-                          <span>{occurence.createdOn}</span>
-                          <p>{occurence.content}</p>
-                        </div>
-                      </O.OccurrenceBox>
-                    )}
-                    {occurence.type === "attachment" && (
-                      <O.OccurrenceBox color="#9D28AC">
-                        <img src={anexo} alt="occurence" />
-                        <div className="OccurrenceContent">
-                          <h2>{occurence.title}</h2>
-                          <span>{occurence.createdOn}</span>
-                          <p>{occurence.content}</p>
-                        </div>
-                      </O.OccurrenceBox>
-                    )}
-                    {occurence.type === "relevant_fact" && (
-                      <O.OccurrenceBox color="#2F80ED">
-                        <img src={fato} alt="occurence" />
-                        <div className="OccurrenceContent">
-                          <h2>{occurence.title}</h2>
-                          <span>{occurence.createdOn}</span>
-                          <p>{occurence.content}</p>
-                        </div>
-                      </O.OccurrenceBox>
-                    )}
-                  </>
-                ))}
-            </S.ServicePosition>
             <S.InfoPosition>
               <S.Info>
                 <span>Identificação do paciente</span>
@@ -259,6 +189,91 @@ function Prontuario() {
                 <h4>{patient?.personalAnnotations}</h4>
               </S.Info>
             </S.InfoPosition>
+            <S.ServicePosition>
+              <S.AddService>
+                <div>
+                  <span>serviço:</span>
+                  <select name="select" defaultValue="Novo acompanhamento">
+                    <option value="valor1">Novo acompanhamento</option>
+                    <option value="valor2">Valor 2</option>
+                    <option value="valor3">Valor 3</option>
+                  </select>
+                  <span>data inicial:</span> 18/10/2022
+                  <img src={pencil} className='edit' alt="image" />
+                  <img src={junk} className="red" alt="image" />
+                </div>
+                <hr />
+                <div>
+                  <a onClick={() => activateModal({ service: "Sessão" })}>
+                    <img src={sessao} alt="image" />
+                    Sessão
+                  </a>
+                  <a
+                    onClick={() => activateModal({ service: "Fato relevante" })}
+                  >
+                    <img src={fato} alt="image" />
+                    Fato Relevante
+                  </a>
+                  <a onClick={() => activateModal({ service: "Anexo" })}>
+                    <img src={anexo} alt="image" />
+                    Anexo
+                  </a>
+                  <a
+                    onClick={() =>
+                      activateModal({ service: "Avaliação Psicológica" })
+                    }
+                  >
+                    <img src={avaliacao} alt="image" />
+                    Avaliação Psicológica
+                  </a>
+                </div>
+              </S.AddService>
+              <div className="splitter">
+                <div>
+                  <hr/>
+                </div>
+                <p>filtrar por todos</p>
+              </div>              
+              {timeLine?.timeline.occurrences.map((occurence, index) => (
+                <>
+                  {occurence.type === "session" && (
+                    <>{index !== 0 && <div className="session"><hr/><p></p></div>}
+                    <O.OccurrenceBox color="#00995D">
+                      <img src={session_occurrence} alt="occurence" />
+                      <div className="OccurrenceContent">
+                        <h2>{occurence.title}</h2>
+                        <span>{occurence.createdOn}</span>
+                        <p>{occurence.content}</p>
+                      </div>
+                    </O.OccurrenceBox>
+                    </>
+                  )}
+                  {occurence.type === "attachment" && (
+                    <>{index !== 0 && <div className="attachment"><hr/><p></p></div>}
+                    <O.OccurrenceBox color="#9D28AC">
+                      <img src={atttachment_occurrence} alt="occurence" />
+                      <div className="OccurrenceContent">
+                        <h2>{occurence.title}</h2>
+                        <span>{occurence.createdOn}</span>
+                        <p>{occurence.content}</p>
+                      </div>
+                    </O.OccurrenceBox>
+                    </>
+                  )}
+                  {occurence.type === "relevant_fact" && (
+                    <>{index !== 0 && <div className="fact"><hr/> <p></p></div>}
+                    <O.OccurrenceBox color="#2F80ED">
+                      <img src={fact_occurrence} alt="occurence" />
+                      <div className="OccurrenceContent">
+                        <h2>{occurence.title}</h2>
+                        <span>{occurence.createdOn}</span>
+                        <p>{occurence.content}</p>
+                      </div>
+                    </O.OccurrenceBox></>
+                  )}
+                </>
+              ))}
+            </S.ServicePosition>
           </>
         )}
         <ModalProntuario
