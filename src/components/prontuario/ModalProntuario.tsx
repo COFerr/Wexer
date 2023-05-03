@@ -15,17 +15,34 @@ type props = {
     modalState: () => void;
 }
 
-const onSubmit = (data : InputEvent ) => {alert(JSON.stringify(data))};
-
-
+type serviceData = {
+    date: string;
+    start: string;
+    end: string;
+    title: string;
+    file: string;
+    content: string;
+    type: string;
+}
 
 function ModalProntuario({ service, modalState }: props): JSX.Element {
-    const [value, setValue] = useState('')
     const Navigate = useNavigate()
-    const {register, handleSubmit} = useForm<InputEvent>();
+    const {register, handleSubmit, unregister} = useForm<Partial<serviceData>>();
+    const onClose = () => {modalState(); unregister('date'); unregister('start'); unregister('end');
+     unregister('title'); unregister('file'); unregister('content'); unregister('type'); setFileName('')}
+    const [fileName, setFileName] = useState('')    
+    const onSubmit = (data : Partial<serviceData> ) => {
+        let output = data;
+        if(service === 'Anexo') output = {
+            ...data,
+            file: fileName
+        } 
+        alert(JSON.stringify(output))
+        onClose()    
+    };
     return (
         <S.ModalProntuario service={service}>
-            <S.ContainerModalProntuario service={service} >
+            <S.ContainerModalProntuario service={service}>
                 
                 <div className='service'>
                     {service === 'Sessão' && <h2>Nova Sessão</h2>}
@@ -34,7 +51,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                     {service === 'Avaliação Psicológica' && <h2>Nova Avaliação Psicológica</h2>}
                     {service === 'Anotações Pessoais' && <h2>Anotações Pessoais</h2>}
                     {service === 'Serviço' && <h2>Novo Serviço</h2>}
-                    <a><img src={close} alt='vazio' onClick={modalState} /></a>
+                    <a><img src={close} alt='vazio' onClick={onClose} /></a>
                 </div>
                 
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,66 +61,66 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         <div>
                             <div>
                                 <label>Data*</label>
-                                <input type="date" className="data"></input>
+                                <input type="date" className="data" {...register("date")}></input>
                             </div>
                             <div>
                                 <label>Hora de início*</label>
-                                <input className="data"></input>
+                                <input className="data" {...register("start")}></input>
                             </div>
                             <div>
                                 <label>Hora fim*</label>
-                                <input className="data"></input>
+                                <input className="data" {...register("end")}></input>
                             </div>
                         </div>
                         <hr />
                         <div className="flexleft"><span>2</span><p>Sessão</p></div>
                         <label>titulo*</label>
-                        <input></input>
+                        <input {...register("title")}></input>
                         <label>Resumo da sessão*</label>
-                        <textarea></textarea>
+                        <textarea {...register("content")}></textarea>
                     </>}
                 {service === 'Fato relevante' &&
                     <>
                         <div>
                             <div>
                                 <label>Data*</label>
-                                <input type="date" className="data"></input>
+                                <input type="date" className="data" {...register("date")}></input>
                             </div>
                             <div>
                                 <label>Título*</label>
-                                <input className="title"></input>
+                                <input className="title" {...register("title")}></input>
                             </div>
                         </div>
                         <label>Descrição*</label>
-                        <textarea placeholder="text"></textarea>
+                        <textarea placeholder="text" {...register("content")}></textarea>
                     </>}
                 {service === 'Anexo' &&
                     <>
                         <div>
                             <div>
                                 <label>Data*</label>
-                                <input type="date" className='data'></input>
+                                <input type="date" className='data' {...register("date")}></input>
                             </div>
                             <div>
                                 <label>Título*</label>
-                                <input className='title'></input>
+                                <input className='title' {...register("title")}></input>
                             </div>
                         </div>
                         <label>Descrição</label>
-                        <textarea placeholder="text"></textarea>
+                        <textarea placeholder="text" {...register("content")}></textarea>
                         <div><label >Anexar arquivos*</label></div>
                         <div className="upload">
                             <div className="inputFileOverlay">Escolher o arquivo...</div>
-                            <input type="file" name="upload" id="upload" onChange={(e) => { setValue(e.target && e.target.files && !!e.target.files.length ? e.target.files[0].name : ''); console.log(e) }} />
+                            <input type="file" id="upload" onChange={(e) => { setFileName(e.target && e.target.files && !!e.target.files.length ? e.target.files[0].name : ''); console.log(e)}}/>
                         </div>
-                        <p>{value}{value && <img src={close} alt="fechar" onClick={() => setValue('')} />}</p>
+                        <div><p>{fileName}{fileName && <img src={close} alt="fechar" onClick={() => setFileName('')} />}</p></div>
                     </>}
                 {service === 'Avaliação Psicológica' &&
                     <>
                         <div>
                             <div>
                                 <label>Data*</label>
-                                <input type="date" className="data"></input>
+                                <input type="date" className="data" {...register("date")}></input>
                             </div>
                         </div>
                         <div className="atention">
@@ -118,7 +135,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                     <>
                         <EditorToolbar />
                         <ReactQuill theme="snow" modules={modules} formats={formats}>
-                            <S.EditingArea></S.EditingArea>
+                            <S.EditingArea {...register('content')}></S.EditingArea>
                         </ReactQuill>
                     </>
                 }
@@ -133,7 +150,7 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                         <label>Serviço</label>
                         <select></select>
                         <label>Demandas e objetivos</label>
-                        <textarea placeholder="text" {...register("demands") }/>
+                        <textarea placeholder="text" {...register("content") }/>
                     </>
                 }
 
@@ -141,8 +158,8 @@ function ModalProntuario({ service, modalState }: props): JSX.Element {
                     <footer>
                         <div><p>*Campos obrigatórios</p></div>
                         <div>
-                            <a className="cancel" onClick={modalState}>cancelar</a>
-                            {service !== 'Avaliação Psicológica' ? <button className="confirm" type="submit">criar</button> : <a className="confirm" onClick={() => {Navigate('/user/avaliacao_psicologica')}}>prosseguir</a>}
+                            <a className="cancel" onClick={() => onClose()}>cancelar</a>
+                            {service !== 'Avaliação Psicológica' ? <button className="confirm" type="submit">criar</button> : <button className="confirm" onClick={() => {Navigate('/user/avaliacao_psicologica')}}>prosseguir</button>}
                         </div>
                     </footer> :
                     <button type='submit'>Salvar</button>}

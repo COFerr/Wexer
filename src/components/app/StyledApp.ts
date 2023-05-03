@@ -26,9 +26,9 @@ justify-content:space-between;
 font-family: montserrat;
 color: #017849;
 padding: 0 27.5px;
-align-content: center;
+align-content: baseline;
 height: 63px;
-min-width: 90vw;
+min-width: 91vw;
 background: #FFFFFF;
 /* Drop Shadow */
 box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);

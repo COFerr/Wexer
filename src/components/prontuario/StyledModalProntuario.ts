@@ -285,7 +285,6 @@ form{
             font-style: normal;
             font-weight: 500;
             font-size: 18px;
-            line-height: 22px;
             /* identical to box height */
             display: flex;
             align-items: center;
@@ -307,7 +306,7 @@ form{
         div{
             display: flex;
             justify-content: center;
-            algin-items: baseline;
+            align-items: baseline;
             gap: 24px;
         }
         .cancel{
@@ -327,6 +326,7 @@ form{
         }
         
         .confirm{
+            cursor: pointer;
             height: 48px;
             width: 147px;
             border-radius: 24px;
@@ -352,7 +352,6 @@ form{
                 font-style: italic;
                 font-weight: 400;
                 font-size: 14px;
-                line-height: 140%;
                 /* identical to box height, or 20px */
                 letter-spacing: 0.2px;
                 /* Cinzas/Cinza 700 */

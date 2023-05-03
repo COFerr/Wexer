@@ -7,7 +7,7 @@ padding-right: 84px;
 display: flex;
 justify-content: space-around;
 alig-items: flex-start;
-flex-wrap: wrap;`
+flex-wrap: wrap-reverse;`
 
 
 type props = {
@@ -248,7 +248,7 @@ width: 924px;
     z-index: 1;
     display: flex;
     position: absolute;
-    width: 4px;
+    width: 2px;
     left: 45px;
     background-color: #00995D;
     color: #00995D;
@@ -263,7 +263,7 @@ width: 924px;
 .fact{
     display: flex;
     position: absolute;
-    width: 4px;
+    width: 2px;
     left: 45px;
     background-color: #2F80ED;
     color: #2F80ED;
@@ -278,7 +278,7 @@ width: 924px;
 .attachment{
     display: flex;
     position: absolute;
-    width: 4px;
+    width: 2px;
     left: 45px;
     background-color: #9D28AC;
     color: #9D28AC;
@@ -294,7 +294,7 @@ width: 924px;
 .eval{
     display: flex;
     position: absolute;
-    width: 4px;
+    width: 2px;
     left: 45px;
     background-color: #EA1E61;
     color: #EA1E61;
