@@ -46,7 +46,7 @@ function FormRegister() {
   return (
     <>
     {phase === 'name' &&
-    <S.RegisterData>
+    <S.RegisterData onSubmit={handleSubmit(() => {setPhase('password');})}>
       <label>
         Nome
         <br />
@@ -54,7 +54,7 @@ function FormRegister() {
         onChange={(event : React.ChangeEvent<HTMLInputElement>) => {
           setUser({...user, 'name': event.target.value});
           setName(event.target.value);
-          }}/>
+          }} required/>
         <br />
       </label>
       <label>
@@ -63,11 +63,11 @@ function FormRegister() {
         <S.Input onChange={(event : React.ChangeEvent<HTMLInputElement>) => {
           setUser({...user, 'email': event.target.value});
           setEmail(event.target.value);
-          }}/>
+          }} required minLength={5}/>
         <br />
       </label>
       <div>
-        <S.Continue onClick={() => {setPhase('password'); alert('prosseguir')}}>Prosseguir --+</S.Continue>
+        <S.Continue type="submit">Prosseguir --+</S.Continue>
       </div>
     </S.RegisterData>}
     {phase === 'password' && 
@@ -78,13 +78,14 @@ function FormRegister() {
         <S.Input onChange={(event : React.ChangeEvent<HTMLInputElement>)=> {
           setUser({...user, 'password': event.target.value});
           setPassword(event.target.value)
-          }}/>
+          }} required minLength={6}/>
         <br />
       </label>
       <label>
         Confirmação
         <br />
-        <S.Input onChange={(event: React.ChangeEvent<HTMLInputElement>) => setUser({...user, 'confirm':event.target.value})}/>
+        <S.Input 
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setUser({...user, 'confirm':event.target.value})} required minLength={6}/>
         <br />
       </label>
       <div>
